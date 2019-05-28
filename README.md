@@ -1,2 +1,27 @@
 # WepApiConsumingSpotifyAPI
-A WebApi Consuming SpotifyAPI and made a internal manipulation of data using EntityFramework InMemory Database
+A WebApi Consuming SpotifyAPI and made a internal manipulation of data using EntityFramework InMemory Database, with a docker cfg for Linux, but if you will run on docker change the Environment Variables for other kind of External repository of configuration data.
+
+
+Additional Information:
+
+IDE: Visual Studio Code
+.NetCore 2.2
+
+https://localhost:5001/api/Albuns/170
+https://localhost:5001/api/Albuns?genre=CLASSIC
+https://localhost:5001/api/Albuns?page=2&perpage=5
+https://localhost:5001/api/Albuns?page=2&perpage=5&genre=CLASSIC
+
+https://localhost:5001/api/sales
+https://localhost:5001/api/sales/1
+
+POST https://localhost:5001/api/sales 
+BODY: [32,101,92,30](sample Ids of Albums) RAW APPLICATION/JSON (Im using POSTMAN)
+
+
+DataBase => InMemory
+
+
+Environment Variables (Containing ClientId and Secret of your register in Spotify)
+MySpotifyClientID
+MySpotifyClientSecret

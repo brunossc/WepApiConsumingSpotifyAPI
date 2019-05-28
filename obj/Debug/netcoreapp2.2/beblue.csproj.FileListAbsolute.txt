@@ -1,0 +1,14 @@
+D:\Bruno\Projetos\beblue\bin\Debug\netcoreapp2.2\beblue.deps.json
+D:\Bruno\Projetos\beblue\bin\Debug\netcoreapp2.2\beblue.runtimeconfig.json
+D:\Bruno\Projetos\beblue\bin\Debug\netcoreapp2.2\beblue.runtimeconfig.dev.json
+d:\Bruno\Projetos\beblue\bin\Debug\netcoreapp2.2\beblue.dll
+d:\Bruno\Projetos\beblue\bin\Debug\netcoreapp2.2\beblue.pdb
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.csprojAssemblyReference.cache
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.csproj.CoreCompileInputs.cache
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.RazorAssemblyInfo.cache
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.RazorAssemblyInfo.cs
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.AssemblyInfoInputs.cache
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.AssemblyInfo.cs
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.RazorTargetAssemblyInfo.cache
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.dll
+d:\Bruno\Projetos\beblue\obj\Debug\netcoreapp2.2\beblue.pdb

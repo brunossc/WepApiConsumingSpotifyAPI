@@ -29,7 +29,7 @@ namespace SpotifyApi
             var result = await client.GetAsync(Url);
             
             var jsonObject = result.Content.ReadAsStringAsync().Result;
-            var artistsIds = this.GetIdsFormJson("(id\\\" : (\\\"[^\"]+\\\"),)", jsonObject);
+            var artistsIds = this.GetValueFormJson("(id\\\" : (\\\"[^\"]+\\\"),)", jsonObject);
 
             foreach(string str in artistsIds)
             {
@@ -37,7 +37,7 @@ namespace SpotifyApi
                 result = await client.GetAsync(Url);
 
                 jsonObject = result.Content.ReadAsStringAsync().Result;
-                var AlbumsNames = this.GetNamesFormJson("(name\\\" : (\\\"[^\"]+\\\"),)", jsonObject);
+                var AlbumsNames = this.GetValueFormJson("(name\\\" : (\\\"[^\"]+\\\"),)", jsonObject);
 
                 artist = string.Empty;
                 for (int i=0; i < AlbumsNames.Count(); i++)
@@ -64,13 +64,7 @@ namespace SpotifyApi
             return albums;
         }
 
-        private IEnumerable<string> GetIdsFormJson(string patter, string jsonObject)
-        {
-            var Ids = Regex.Matches(jsonObject,patter);
-            return Ids.Select(x=>x.Groups[2].Value.Replace("\"",string.Empty));
-        }
-
-        private IEnumerable<string> GetNamesFormJson(string patter, string jsonObject)
+        private IEnumerable<string> GetValueFormJson(string patter, string jsonObject)
         {
             var Ids = Regex.Matches(jsonObject,patter);
             return Ids.Select(x=>x.Groups[2].Value.Replace("\"",string.Empty));

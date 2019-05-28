@@ -14,6 +14,7 @@ https://localhost:5001/api/Albuns?page=2&perpage=5&genre=CLASSIC
 
 https://localhost:5001/api/sales
 https://localhost:5001/api/sales/1
+https://localhost:5001/api/sales?dateini=26/05/2019&datefin=29/05/2019&page=2&perpage=2
 
 POST https://localhost:5001/api/sales 
 BODY: [32,101,92,30](sample Ids of Albums) RAW APPLICATION/JSON (Im using POSTMAN)

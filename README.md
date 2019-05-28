@@ -32,7 +32,7 @@ https://localhost:5001/api/sales?dateini=26/05/2019&datefin=29/05/2019&page=2&pe
 
 POST https://localhost:5001/api/sales 
 
-BODY: [32,101,92,30] (sample Ids of Albums)
+BODY: [32,101,92,30] (sample Ids of Albums) [1,...,N]
 
 RAW APPLICATION/JSON (Im using POSTMAN)
 

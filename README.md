@@ -8,7 +8,7 @@ IDE: Visual Studio Code
 
 .NetCore 2.2
 
-Albums:
+- Albums:
 
 https://localhost:5001/api/Albuns/170
 
@@ -18,7 +18,7 @@ https://localhost:5001/api/Albuns?page=2&perpage=5
 
 https://localhost:5001/api/Albuns?page=2&perpage=5&genre=CLASSIC
 
-Sales:
+- Sales:
 
 https://localhost:5001/api/sales
 
@@ -34,5 +34,7 @@ ________________________________________________________________________________
 DataBase => InMemory
 
 "Environment Variables" (Containing ClientId and Secret of your register in Spotify)
-MySpotifyClientID
-MySpotifyClientSecret
+
+- MySpotifyClientID
+
+- MySpotifyClientSecret

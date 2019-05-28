@@ -5,15 +5,25 @@ A WebApi Consuming SpotifyAPI and made a internal manipulation of data using Ent
 Additional Information:
 
 IDE: Visual Studio Code
+
 .NetCore 2.2
 
+Albums:
+
 https://localhost:5001/api/Albuns/170
+
 https://localhost:5001/api/Albuns?genre=CLASSIC
+
 https://localhost:5001/api/Albuns?page=2&perpage=5
+
 https://localhost:5001/api/Albuns?page=2&perpage=5&genre=CLASSIC
 
+Sales:
+
 https://localhost:5001/api/sales
+
 https://localhost:5001/api/sales/1
+
 https://localhost:5001/api/sales?dateini=26/05/2019&datefin=29/05/2019&page=2&perpage=2
 
 POST https://localhost:5001/api/sales 

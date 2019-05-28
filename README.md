@@ -10,6 +10,8 @@ IDE: Visual Studio Code
 
 - Albums:
 
+https://localhost:5001/api/Albuns
+
 https://localhost:5001/api/Albuns/170
 
 https://localhost:5001/api/Albuns?genre=CLASSIC
@@ -23,6 +25,8 @@ https://localhost:5001/api/Albuns?page=2&perpage=5&genre=CLASSIC
 https://localhost:5001/api/sales
 
 https://localhost:5001/api/sales/1
+
+https://localhost:5001/api/sales?page=2&perpage=2
 
 https://localhost:5001/api/sales?dateini=26/05/2019&datefin=29/05/2019&page=2&perpage=2
 

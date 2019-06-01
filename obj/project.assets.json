@@ -12079,9 +12079,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bruno\\Projetos\\beblue\\beblue.csproj",
-      "projectName": "beblue",
-      "projectPath": "D:\\Bruno\\Projetos\\beblue\\beblue.csproj",
+      "projectUniqueName": "D:\\Bruno\\Projetos\\beblue\\WebApiSpotify.csproj",
+      "projectName": "WebApiSpotify",
+      "projectPath": "D:\\Bruno\\Projetos\\beblue\\WebApiSpotify.csproj",
       "packagesPath": "C:\\Users\\BMB\\.nuget\\packages\\",
       "outputPath": "D:\\Bruno\\Projetos\\beblue\\obj\\",
       "projectStyle": "PackageReference",

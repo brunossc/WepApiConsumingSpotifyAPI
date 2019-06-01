@@ -2,69 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Database;
 using Domain.Model;
+using Domain.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using SpotifyApi;
 
-namespace beblue.Controllers
+namespace WebApiSpotify.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class AlbunsController : ControllerBase
+    public class AlbumsController : ControllerBase
     {
-        private MyDbContext _context;
-        public AlbunsController(MyDbContext context)
+
+        private IAlbumsRepository _repo;
+        public AlbumsController(IAlbumsRepository repo)
         {
-            _context = context;
-
-
+            _repo = repo;
         }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<Albums>> Get()
         {
             string page = Request.Query["page"];
-            string perpage = Request.Query["perpage"];
-            string Genre = Request.Query["genre"];
+            string perPage = Request.Query["perpage"];
+            string genre = Request.Query["genre"];
 
-            IEnumerable<Albums> list;
             int _page;
-            int _perpage;
+            int _perPage;
 
-            if (Int32.TryParse(page, out _page) && Int32.TryParse(perpage, out _perpage))
+            IQueryable<Albums> albumQuery = _repo.Fetch();
+
+            if (Int32.TryParse(page, out _page) && Int32.TryParse(perPage, out _perPage))
             {
-                int skip = (_page - 1) * _perpage;
-                if (!String.IsNullOrEmpty(Genre))
-                {
-                    list = _context.Albums.Where(c=>c.Genre == Genre).OrderBy(x=>x.Name).Skip(skip).Take(_perpage);
-                }
+                if (!String.IsNullOrEmpty(genre))
+                    return _repo.GetGenrePage(genre, _page, _perPage).ToList();
                 else
-                {
-                     list = _context.Albums.OrderBy(x=>x.Name).Skip(skip).Take(_perpage);
-                }
+                    return _repo.GetPage(_page, _perPage).ToList();
             }
             else
             {
-                if (!String.IsNullOrEmpty(Genre))
-                {
-                    list = _context.Albums.Where(c=>c.Genre == Genre).OrderBy(x=>x.Name);
-                }
+                if (!String.IsNullOrEmpty(genre))
+                    return _repo.GetGenre(genre).ToList();
                 else
-                {
-                    list = _context.Albums.OrderBy(x=>x.Name);
-                }                
+                    return _repo.GetAll().OrderBy(x => x.Name).ToList();
             }
-
-            return list.ToList();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Albums> Get(int id)
         {
-            return _context.Albums.Where(c=>c.AlbumsId == id).FirstOrDefault();
+            return _repo.Find(c => c.AlbumsId == id).FirstOrDefault();
         }
     }
 }

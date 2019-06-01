@@ -4,16 +4,16 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY ["beblue.csproj", "./"]
-RUN dotnet restore "./beblue.csproj"
+COPY ["WebApiSpotify.csproj", "./"]
+RUN dotnet restore "./WebApiSpotify.csproj"
 COPY . .
 WORKDIR /src/.
-RUN dotnet build "beblue.csproj" -c Release -o /app
+RUN dotnet build "WebApiSpotify.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "beblue.csproj" -c Release -o /app
+RUN dotnet publish "WebApiSpotify.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "beblue.dll"]
+ENTRYPOINT ["dotnet", "WebApiSpotify.dll"]

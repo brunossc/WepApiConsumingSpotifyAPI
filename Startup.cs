@@ -11,9 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Domain.Repository.Interfaces;
+using Infrastructure.Repository;
 using Database;
 
-namespace beblue
+namespace WebApiSpotify
 {
     public class Startup
     {
@@ -27,6 +29,10 @@ namespace beblue
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAlbumsRepository, AlbumsRepository>();
+            services.AddScoped<ICashbackRepository, CashbackRepository>();
+            services.AddScoped<ISalesRepository, SalesRepository>();
+
             services.AddDbContext<MyDbContext>(options => options.UseInMemoryDatabase("MyDb"));
             services.AddMvc()
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

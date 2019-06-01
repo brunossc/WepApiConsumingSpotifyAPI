@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -38,7 +38,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -48,7 +48,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -59,7 +59,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/beblue.csproj"
+                "${workspaceFolder}/WebApiSpotify.csproj"
             ],
             "problemMatcher": "$tsc"
         }

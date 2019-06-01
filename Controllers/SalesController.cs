@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Database;
 using Domain.Model;
+using Domain.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SpotifyApi;
 
-namespace beblue.Controllers
+namespace WebApiSpotify.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class SalesController : ControllerBase
     {
-        private MyDbContext _context;
-        public SalesController(MyDbContext context)
+        private ISalesRepository _repo;
+        private IAlbumsRepository _repoAlbums;
+        private ICashbackRepository _repoCash;
+
+        public SalesController(ISalesRepository repo, IAlbumsRepository repoAlbums,
+         ICashbackRepository repoCash)
         {
-            _context = context;
-
-
+            _repo = repo;
+            _repoAlbums = repoAlbums;
+            _repoCash = repoCash;
         }
+        
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<Sales>> Get()
@@ -32,7 +35,6 @@ namespace beblue.Controllers
             string DateIni = Request.Query["dateini"];
             string DateFin = Request.Query["datefin"];
 
-            IEnumerable<Sales> list;
             int _page;
             int _perpage;
             DateTime _dateIni;
@@ -46,11 +48,11 @@ namespace beblue.Controllers
                 if (DateTime.TryParse(DateIni, culture, DateTimeStyles.None, out _dateIni)
                 && DateTime.TryParse(DateFin, culture, DateTimeStyles.None, out _dateFin))
                 {
-                    list = _context.Sales.Include(x=>x.Albums).ThenInclude(a=>a.Album).Where(c => c.Date >= _dateIni && c.Date <= _dateFin).OrderBy(x => x.Date).Skip(skip).Take(_perpage);
+                    return _repo.GetPerDatePage(_dateIni, _dateFin, _page, _perpage).ToList();
                 }
                 else
                 {
-                    list = _context.Sales.Include(x=>x.Albums).ThenInclude(a=>a.Album).OrderBy(x => x.Date).Skip(skip).Take(_perpage);
+                    return _repo.GetPage(_page, _perpage).ToList();
                 }
             }
             else
@@ -58,22 +60,20 @@ namespace beblue.Controllers
                 if (DateTime.TryParse(DateIni, culture, DateTimeStyles.None, out _dateIni)
                 && DateTime.TryParse(DateFin, culture, DateTimeStyles.None, out _dateFin))
                 {
-                    list = _context.Sales.Include(x=>x.Albums).ThenInclude(a=>a.Album).Where(c => c.Date >= _dateIni && c.Date <= _dateFin).OrderBy(x => x.Date);
+                    return _repo.GetPerDate(_dateIni, _dateFin).ToList();
                 }
                 else
                 {
-                    list = _context.Sales.Include(x=>x.Albums).ThenInclude(a=>a.Album).OrderBy(x => x.Date);
+                    return _repo.GetAll().OrderBy(c=>c.Date).ToList();
                 }
             }
-
-            return list.ToList();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Sales> Get(int id)
         {
-            Sales sale = _context.Sales.Include(x=>x.Albums).ThenInclude(a=>a.Album).Where(c => c.SalesId == id).FirstOrDefault();
+            Sales sale = _repo.Find(c=>c.SalesId == id).FirstOrDefault();
             return sale;
         }
 
@@ -82,8 +82,8 @@ namespace beblue.Controllers
         public void Post(int[] albumsIds)
         {
             int currentWeekday = (int)((DayOfWeek)Enum.Parse(typeof(DayOfWeek), DateTime.Now.DayOfWeek.ToString()));
-            IList<Albums> albums = _context.Albums.Where(c => albumsIds.Contains(c.AlbumsId)).ToList();
-            IList<CashBack> cashback = _context.CashBack.Where(c=>c.Weekday == currentWeekday).ToList();
+            IList<Albums> albums = _repoAlbums.Find(c => albumsIds.Contains(c.AlbumsId)).ToList();
+            IList<CashBack> cashback = _repoCash.Find(c=>c.Weekday == currentWeekday).ToList();
             Albums album;
             Sales sale = new Sales();
             sale.Date = DateTime.Now;
@@ -103,8 +103,8 @@ namespace beblue.Controllers
                 }
             }
 
-            _context.Sales.Add(sale);
-            _context.SaveChanges();
+            _repo.Add(sale);
+            _repo.SaveChanges();
         }
     }
 }

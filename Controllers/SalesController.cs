@@ -96,7 +96,7 @@ namespace WebApiSpotify.Controllers
                 if (album != null)
                 {
                     albumSold = new AlbumsSold();
-                    albumSold.Album = album;
+                    albumSold.AlbumsId = album.AlbumsId;
                     albumSold.Price = album.Price;
                     albumSold.CashBack = cashback.Where(c=>c.Genre == album.Genre).FirstOrDefault().value;
                     sale.Albums.Add(albumSold);

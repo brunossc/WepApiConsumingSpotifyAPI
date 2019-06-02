@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Repository.Interfaces;
 using Infrastructure.Repository;
 using Database;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace WebApiSpotify
 {
@@ -37,6 +38,10 @@ namespace WebApiSpotify
             services.AddMvc()
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
             .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddSwaggerGen(c =>
+                { c.SwaggerDoc("v1", new Info { Title = "WebApiSpotify", Version = "v1" }); }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,12 @@ namespace WebApiSpotify
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+
+                app.UseSwaggerUI(c =>
+                                {
+                                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiSpotify V1");
+                                });
             }
             else
             {

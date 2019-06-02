@@ -16,6 +16,11 @@ namespace Infrastructure.Repository
         {
         }
 
+        new public IEnumerable<Sales> GetAll()
+        {
+            return GetSalesWithInclude();
+        }
+
         public IEnumerable<Sales> GetPage(int page, int perPage)
         {
             int skip = (page - 1) * perPage;

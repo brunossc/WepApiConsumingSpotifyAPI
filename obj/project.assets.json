@@ -12079,11 +12079,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bruno\\Projetos\\beblue\\WebApiSpotify.csproj",
+      "projectUniqueName": "d:\\Bruno\\Projetos\\GitHub\\WepApiConsumingSpotifyAPI\\WebApiSpotify.csproj",
       "projectName": "WebApiSpotify",
-      "projectPath": "D:\\Bruno\\Projetos\\beblue\\WebApiSpotify.csproj",
+      "projectPath": "d:\\Bruno\\Projetos\\GitHub\\WepApiConsumingSpotifyAPI\\WebApiSpotify.csproj",
       "packagesPath": "C:\\Users\\BMB\\.nuget\\packages\\",
-      "outputPath": "D:\\Bruno\\Projetos\\beblue\\obj\\",
+      "outputPath": "d:\\Bruno\\Projetos\\GitHub\\WepApiConsumingSpotifyAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

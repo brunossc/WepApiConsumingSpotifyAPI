@@ -46,3 +46,9 @@ You can edit in Dockerfile.
 - MySpotifyClientID
 
 - MySpotifyClientSecret
+
+For running in Docker(Linux Container):
+ - docker build -t webapispotify .
+ - docker run -d -p 42020:80 webapispotify
+change "https://" for "http://" when do you run the end points of WebApi
+

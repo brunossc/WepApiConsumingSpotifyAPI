@@ -41,6 +41,7 @@ ________________________________________________________________________________
 DataBase => InMemory
 
 "Environment Variables" (Containing ClientId and Secret of your register in Spotify)
+You can edit in Dockerfile.
 
 - MySpotifyClientID
 
